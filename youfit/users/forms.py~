@@ -1,0 +1,26 @@
+#Comment Old 
+from django.forms import ModelForm 
+from users.models import Registration
+
+from django import forms
+
+class RegistrationForm(ModelForm):
+    
+    class Meta:
+        model = Registration
+        fields = ['user_fullname', 'user_password']
+
+    def save(self, commit=True):
+	user = super(ModelForm, self).save(commit=False)
+	
+	if commit:
+	   user.save()
+	
+	return user
+
+	
+   	
+class Choice(forms.Form):
+       CHOICES = (('Bangalore', 'Bangalore',), ('Delhi', 'Delhi'), ('Pune', 'Pune'), ('Mumbai', 'Mumbai'))
+       city = forms.ChoiceField(widget=forms.Select(attrs={'class':'city-dropdown', 'target': '_blank'}), choices=CHOICES, label='')
+

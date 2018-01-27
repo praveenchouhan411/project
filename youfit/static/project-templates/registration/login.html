@@ -1,0 +1,22 @@
+{% load i18n %}
+
+
+{% block content %}
+<div class="modal-popup login">
+
+	<div class="container">
+		<p>This is Login Page</p>
+		<form method="post" action=".">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<p>Login</p>
+			<input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}" />
+  			<input class="form-control" type="hidden" name="next" value="{{ next }}" />
+		</form>
+	</div>
+
+<p>{% trans "Forgot Password/ Change Password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}"</a>!</p>
+<p>{% trans "Not Number" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}"</a>!</p>
+
+</div>
+{% endblock %}

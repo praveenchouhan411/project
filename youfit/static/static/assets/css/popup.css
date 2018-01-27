@@ -1,0 +1,46 @@
+/* This is Popup CSS  */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    display: inline-block;
+    border: 3px solid #00573d;
+    border-radius: 8px 8px 0 8px;
+    line-height: 1;
+}
+
+  td, th {
+    
+    text-align: left;
+    padding: 8px;
+    
+  }
+
+td.align { border-right: 3px solid #00573d; }
+tr.wrap-link td a{ text-decoration: none; color: #00573d; }
+
+
+#wrapper {
+  display: none;
+  width: 232px;
+  margin: 50px auto;
+  background: #fff;
+  background-clip: border-box;
+  border: 10px solid #00573d;
+  border-radius: 5px;
+  background-clip: padding-box;
+  text-align: center;
+  height: auto;
+  top: 0px;
+  bottom: auto;
+  position: absolute;
+  padding: 30px 0 30px 0;
+  left: 5px;
+}
+
+
+.tour-popup:hover .wrapper{
+   display : block;
+ }
+ 
+
+}

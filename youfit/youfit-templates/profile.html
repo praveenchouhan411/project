@@ -1,0 +1,89 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  
+  <head>
+    
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <meta name="description" content="Find Your Fitness in City">
+    <meta name="keyword" content="Fitness, GYM, Yoga, Near in City, You Fit, Fitness in City">
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+	
+	<!-- Ajax jQuery Library -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+    <!-- Popup Modal Box -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    
+    <!-- Project CSS and JS files-->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/default.css' %}">
+ 	<script type="text/javascript" src="{% static 'assets/js/commonjs.js' %}"></script>
+ 	<!--
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	-->
+
+  </head>
+
+  <script type="text/javascript"></script>
+  
+  <body>
+  	
+  	<!-- Main Wrap -->
+  	<div class="main_wrap">
+  		
+  		<!-- Header Section -->
+	    <div class="header" style="">    	
+			<!-- <img src="{% static 'assets/images/logo.png' %}" alt="YouFit Logo"> -->
+            <a title="Logo" class="home-btn logo" href="http://127.0.0.1:8000/youfit">YouFit</a>
+            <input type="text" value="" placeholder="Search Fitness Location"/>	
+        </div>
+		<!-- Header section endded here -->
+	    
+	    <!-- Containner/ Container for Profile Section starts here -->
+	    <div class="container">
+		    <!-- Profile Section -->
+		    <div class="profile-section">
+			    <div class="profile-nav">
+			    	<p>{{ username }} </p>
+			    	<form class="profile-page" action="." method="post">{% csrf_token %}
+			    		
+			    		<ul>{{ form }}</ul>	
+			    		<input class="btn btn-primary" value="Cancel" type="submit">
+			    		<input class="btn btn-primary" value="Update" type="submit">
+			    	</form>
+			    	
+			    	
+			    </div>
+			    <div class="profile-nav-result">
+			    	
+			    </div>
+			</div>
+			<!-- Profile Section End -->
+			
+			<!-- Wrapper Section -->
+			<div class="wrapper">
+        		
+       		</div>
+	        <!-- Wrapper Section Endded Here -->
+		    
+		    <!-- Mid Artcle Section -->
+		   	<div class="mid-article">
+
+		    </div>
+		    <!-- Mid Article Section Endded Here -->
+
+		</div>	  
+		<!-- Contianner Section Endded here for Profile Section -->
+
+		<!-- Footer Section -->
+		<div class="footer-end">This is footer</div>
+		<!-- Footer Section Endded Here -->
+    
+    </div>
+    <!--Main Wrap Endded Here -->
+
+  </body>
+</html>

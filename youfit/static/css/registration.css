@@ -1,0 +1,7 @@
+<style type="text/css">
+		body { padding-top: : 60px; }
+		button, input, select[multiple], textarea { background-image: none; border: 1px solid;	}
+		.navbar-inverse { background: #00573d; }
+		a.navbar-brand { color: #fff !important; font-weight: bold; text-transform: uppercase; }
+		a { color: #00573d !important;  }
+</style>

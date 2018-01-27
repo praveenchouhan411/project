@@ -1,0 +1,134 @@
+{% load i18n %}
+{% load static %}
+
+
+{% block content %}
+<!-- This is login section -->
+
+<!doctype html>
+<html lang="en">
+  
+  <head>
+   
+    <meta charset="UTF-8">
+    <meta name="description" content="Find Your Fitness in City">
+    <meta name="keyword" content="Fitness, GYM, Yoga, Near in City, You Fit, Fitness in City">
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>You Fit</title>
+    
+ 	<!-- Ajax jQuery Library -->
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+    <!-- Popup Modal Box -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    
+    <!-- Project CSS and JS files-->
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/default.css' %}">
+ 	<script type="text/javascript" src="{% static 'assets/js/commonjs.js' %}"></script>
+
+ 	<!--
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	-->
+
+		
+  </head>
+
+  <script type="text/javascript">
+  	
+
+  	
+  </script>
+  
+  <body>
+
+  	<div class="main_wrap">
+  		
+  		<!-- Header Section -->
+	    <div class="header {% if button_function %} nonprofile {% endif %}">
+	    	
+			<!-- <img src="{% static 'assets/images/logo.png' %}" alt="YouFit Logo"> -->
+            <a title="Logo" class="home-btn logo" href="http://127.0.0.1:8000/youfit">YouFit</a>
+            
+            <input type="text" value="" placeholder="Search Fitness Location"/>
+        	<button class="login-button {{ button_function }}">{{ button_value }}</button>
+
+        </div>
+
+		<!-- Header section endded here -->	    
+	  	
+	  	<div class="modal-popup login">
+
+			<div class="modal-container">
+				<button title="Close (Esc)" type="button" class="close-x" onclick="return close_fun();">×</button>
+				
+				<p id="login-head">LOGIN</p>
+				<form class="login-form" method="post" action=".">
+					{% csrf_token %}
+					{{ form.as_p }}
+					<input class="btn btn-primary" type="submit" value="{% trans 'Log in' %}" />
+		  			<input class="form-control" type="hidden" name="next" value="{{ next }}" />
+				</form>
+				<p class="register-link">{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a></p>
+			</div>
+
+			<!-- 
+			<p>{% trans "Forgot Password/ Change Password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}"</a>!</p>
+			-->
+		</div>
+
+	  	<!-- Main Containner starts here-->
+
+	    <div class="container">
+		    <!-- Banner Section -->
+		    <div class="banner">
+			    <div class="main">
+			    	<img height="" src="{% static 'assets/images/banner-fit_01.jpeg' %}" type="image/gif">
+			    </div>
+
+			</div>
+			<!-- Banner Section End -->
+			<!--Wrapper/Main Containner Section -->
+			<div class="wrapper">
+        		<p>{{ language }}</p>
+        		<p>{{ username }} </p>
+        		<h1>EXPLORE YouFit</h1>
+    			    		
+				<div class="left-wrapper">
+					<a href="http://127.0.0.1:8000/youfit/{{ city }}/gyms"><h3>GYM</h3></a> 
+        		</div>
+	        	<div class="right-wrapper" style="pointer-events: none; cursor: default;">
+					<a href="#"><h3>Yoga</h3></a> 
+	        	</div>
+       		</div>
+	        <!-- Wrapper Section Endded Here -->
+		    
+		   	<div class="mid-article">
+		    	<p>Result of Page here</p>
+				
+				{% for i in data %}
+					
+					{% if  i.city == city %}
+
+    				<p> {{ i.id }} {{ i.area }} {{ i.name }} {{ i.user_rating }} </p>
+    					
+    				{% endif %}
+
+    			{% endfor %}
+		    </div>	
+		</div>	  
+		
+		<!-- Contianner Section Endded here -->
+	
+		<!-- Footer Section -->
+		<div class="footer-end">This is footer</div>
+
+	</div>
+	<!-- Main-Wrap Endded Here -->
+
+</body>
+</html>
+{% endblock %}

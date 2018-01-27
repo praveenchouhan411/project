@@ -1,0 +1,103 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  
+  <head>
+   
+    <meta charset="UTF-8">
+    <title>You Fit</title>
+    
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/default.css' %}">
+ 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'assets/js/commonjs.js' %}"></script>
+
+    <!-- Popup Modal Box -->
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+	
+  </head>
+
+  <script type="text/javascript">
+
+
+  </script>
+  
+  <body>
+
+  	<div class="main_wrap">
+  		
+  		<!-- Header Section -->
+	    <div class="header">
+	    	
+			<!-- <img src="{% static 'assets/images/logo.png' %}" alt="YouFit Logo"> -->
+            <a title="Logo" class="home-btn logo" href="http://127.0.0.1:8000/youfit">YouFit</a>
+            
+            	{{ form }}
+            
+            <input type="text" value="" placeholder="Search Fitness Location"/>
+        	  
+            <div class="breadcrumbs" style="display: none;">
+
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/youfit/{{ city }}/">{{ city }}</a></li>
+                <li><a href="/youfit/{{ city }}/gyms">Gyms</a></li>
+              </ul>
+            </div>
+        </div>
+		<!-- Header section endded here -->
+	    
+	    <!-- Main Containner starts here -->
+	    <div class="container-city">    
+          <!--
+
+          {% for i in data %}
+          
+          {% if  i.city == city %}
+
+            <p> {{ i.id }} {{ i.area }} {{ i.name }} {{ i.user_rating }} </p>
+              
+            {% endif %}
+
+          {% endfor %}
+          
+          -->
+          {{ t }}
+          <p class="result_tag">Gyms In {{ city }}</p>
+
+          <div class="result">
+             
+            {% for i in data %}
+
+                {% if i.city == city %}
+                    
+                    <div class="left-image"> 
+                      <img height="275" width="250" alt="left-image-0" src="/static/assets/images/{{i.image_name}}" type="image/gif"/>
+                    </div>
+                    <div class="right-image"> 
+                      <span>  {{ i.name }} {{ i.location }} {{ i.city }}  </span>
+                      <span class="rating"> {{ i.user_rating }} </span>   
+                      <button class="login-button" onclick="window.location='http://127.0.0.1:8000/youfit';">Explore More</button>
+                    </div>
+                    
+
+                {% endif %}
+
+            {% endfor %}
+
+          </div>
+			
+  		</div>	  
+  		<!-- Contianner Section Endded here -->
+
+		
+    </div>
+
+  </body>
+</html>

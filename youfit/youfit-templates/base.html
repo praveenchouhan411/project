@@ -1,0 +1,200 @@
+{% load static %}
+{% load i18n %}
+<!doctype html>
+<html lang="en">
+  
+  <head>
+   
+    <meta charset="UTF-8">
+    <title>You Fit</title>
+    
+    <link type="text/css" rel="stylesheet" href="{% static 'assets/css/default.css' %}">
+ 	
+ 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+ 	
+ 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{% static 'assets/js/commonjs.js' %}"></script>
+
+    <!-- Popup Modal Box -->
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+	
+  </head>
+
+  <script type="text/javascript">
+
+	/*
+	$.ajax({
+		    type: "GET",
+		    url: "http://127.0.0.1:8000/accounts/login",
+		    //data: = $('form').serialize();
+		    dataType: 'html',
+		    data: {'content': name, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+		    contentType: "application/json; charset=utf-8",
+		    success: function(result){
+		        alert("Success");
+		        alert(data);
+		    },
+		    error: function(jqxhr, status, exception) 
+		    {
+             console.log("AJAX Request Fail");
+             alert('Exception:', exception);
+         	}
+		});
+	*/
+
+	/*
+	
+	$.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:8000/accounts/login", 
+        data: {'form': 'form', 'name': 'name'},
+        success : function(data) {
+             alert(data);
+             //$('.row.replace').html(data);
+        }
+	});
+
+	
+	var data = $('form').serialize();
+
+	$.post('http://127.0.0.1:8000/accounts/login', data).success(function(data)
+	{
+    	$('main_wrap').html(data)
+	});	
+	
+	*/
+
+  	console.log("Hello Python");
+  	$(document).ready(function()
+  	{
+
+  		$("#dialog").dialog();
+
+  		url = window.location.href;
+  		
+  		console.log(url);
+  		
+  		if(slug!='')
+    		//value = $('.city-dropdown').attr(":selected", slug);
+    		$('.city-dropdown option[value=slug]').attr('selected',value);
+  	
+		$('#id_city').on('change', 'select', function (e) 
+  		{
+
+  			alert("Test 2");
+    		/*var val = $(e.target).val();
+    		var text = $(e.target).find("option:selected").text(); //only time the find is required
+    		var name = $(e.target).attr('name');
+    		alert(val+ " " + name);*/ 
+		});    		
+
+  		//console.log("Hi");
+  		/*
+  		var slug = url.split('/');
+    	slug = slug[slug.length - 2];
+    	console.log("Test 1");
+    	console.log(slug);
+  		*/
+
+   		
+		$('#id_city').change(function() {
+    	
+    	
+    	value = $('.city-dropdown').find(":selected").text();
+
+	  	console.log(value);
+
+	  	url = "http://127.0.0.1:8000/"+value;
+		
+		window.location.replace(url);
+	  	
+
+
+	  	});
+		
+  		
+	});
+
+
+
+  </script>
+  
+  <body>
+
+
+  	<div id="dialog" title="Basic dialog">
+	  	<p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+	</div>
+
+
+  	<div class="main_wrap">
+  		
+  		<!-- Header Section -->
+	    <div class="header">
+	    	
+			<!-- <img src="{% static 'assets/images/logo.png' %}" alt="YouFit Logo"> -->
+            <a title="Logo" class="home-btn logo" href="http://127.0.0.1:8000/">YouFit</a>
+            
+            	
+            
+            <input type="text" value="" placeholder="Search Fitness Location"/>
+        	<a class="login" href="http://127.0.0.1:8000/accounts/login/">LOGIN</a>
+
+        </div>
+
+     
+		<!-- Header section endded here -->
+	    
+	    <!-- Main Containner starts here -->
+	    <div class="container">
+		    <!-- Banner Section -->
+		    <div class="banner">
+			    <div class="main">
+			    	<img height="" src="{% static 'assets/images/banner-fit_01.jpeg' %}" type="image/gif">
+			    </div>
+			</div>
+			<!-- Banner Section End -->
+			
+			<!--Wrapper/Main Containner Section -->
+			<div class="wrapper">
+        		<h1>EXPLORE</h1>
+				<div class="left-wrapper">
+					<a href="http://127.0.0.1:8000/{{ city }}/gyms"><h3>GYM</h3></a> 
+        		</div>
+	        	<div class="right-wrapper" style="pointer-events: none; cursor: default;">
+					<a href="#"><h3>Yoga</h3></a> 
+	        	</div>
+       		</div>
+	        <!-- Wrapper Section Endded Here -->
+		    
+		   	<div class="mid-article">
+
+		    	<p>Result of Page</p>
+				
+				{% for i in data %}
+					
+					{% if  i.city == city %}
+
+    				<p> {{ i.id }} {{ i.area }} {{ i.name }} {{ i.user_rating }} </p>
+    					
+    				{% endif %}
+
+    			{% endfor %}
+
+		    </div>
+			
+		</div>	  
+		<!-- Contianner Section Endded here -->
+
+		<!-- Footer Section -->
+		<div class="footer-end">This is footer</div>
+		<!-- Footer Section Endded Here -->
+    
